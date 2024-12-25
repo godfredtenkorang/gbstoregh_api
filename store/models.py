@@ -46,17 +46,17 @@ class Product(models.Model):
         
     def get_image_1(self):
         if self.image1:
-            return "https://127.0.0.1/" + self.image1.url
+            return "http://127.0.0.1:8000" + self.image1.url
         return ''
     
     def get_image_2(self):
         if self.image1:
-            return "https://127.0.0.1/" + self.image2.url
+            return "http://127.0.0.1:8000" + self.image2.url
         return ''
     
     def get_image_3(self):
         if self.image1:
-            return "https://127.0.0.1/" + self.image3.url
+            return "http://127.0.0.1:8000" + self.image3.url
         return ''
         
     
