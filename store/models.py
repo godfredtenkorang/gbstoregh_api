@@ -1,5 +1,4 @@
 from django.db import models
-from PIL import Image
 
 class Category(models.Model):
     name = models.CharField(max_length=100, db_index=True)
@@ -44,30 +43,20 @@ class Product(models.Model):
         
     def get_category(self):
         return self.category.name
-    
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-
-        img = Image.open(self.image1.path)
-
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.image1.path)
         
     def get_image_1(self):
         if self.image1:
-            return "https://api-gbstoregh.xyz" + self.image1.url
+            return "http://api-gbstoregh.xyz" + self.image1.url
         return ''
     
     def get_image_2(self):
         if self.image2:
-            return "https://api-gbstoregh.xyz" + self.image2.url
+            return "http://api-gbstoregh.xyz" + self.image2.url
         return ''
     
     def get_image_3(self):
         if self.image3:
-            return "https://api-gbstoregh.xyz" + self.image3.url
+            return "http://api-gbstoregh.xyz" + self.image3.url
         return ''
         
     
