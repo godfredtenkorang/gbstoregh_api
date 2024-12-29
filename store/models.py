@@ -1,4 +1,5 @@
 from django.db import models
+from PIL import Image
 
 class Category(models.Model):
     name = models.CharField(max_length=100, db_index=True)
@@ -43,6 +44,16 @@ class Product(models.Model):
         
     def get_category(self):
         return self.category.name
+    
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        img = Image.open(self.image1.path)
+
+        if img.height > 300 or img.width > 300:
+            output_size = (300, 300)
+            img.thumbnail(output_size)
+            img.save(self.image1.path)
         
     def get_image_1(self):
         if self.image1:
