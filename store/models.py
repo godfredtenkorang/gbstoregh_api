@@ -30,9 +30,9 @@ class Product(models.Model):
     description7 = models.CharField(max_length=250, blank=True, default="")
     brand = models.CharField(max_length=100, default='un-branded')
     product_availability = models.CharField(max_length=20, choices=PRODUCT_AVAILABILITY, default='in stock')
-    image_one = models.ImageField(upload_to='product_img/one', null=True)
-    image_two = models.ImageField(upload_to='product_img/two', null=True)
-    image_three = models.ImageField(upload_to='product_img/three', null=True)
+    image1 = models.ImageField(upload_to='product_img/one', null=True)
+    image2 = models.ImageField(upload_to='product_img/two', null=True)
+    image3 = models.ImageField(upload_to='product_img/three', null=True)
     normal_price = models.PositiveBigIntegerField(null=True)
     final_price = models.PositiveBigIntegerField()
     date_added = models.DateTimeField(auto_now_add=True)
@@ -45,18 +45,18 @@ class Product(models.Model):
         return self.category.name
         
     def get_image_1(self):
-        if self.image_one:
-            return "https://api-gbstoregh.xyz" + self.image_one.url
+        if self.image1:
+            return "https://api-gbstoregh.xyz" + self.image1.url
         return ''
     
     def get_image_2(self):
-        if self.image_two:
-            return "https://api-gbstoregh.xyz" + self.image_two.url
+        if self.image2:
+            return "https://api-gbstoregh.xyz" + self.image2.url
         return ''
     
     def get_image_3(self):
-        if self.image_three:
-            return "https://api-gbstoregh.xyz" + self.image_three.url
+        if self.image3:
+            return "https://api-gbstoregh.xyz" + self.image3.url
         return ''
         
     
